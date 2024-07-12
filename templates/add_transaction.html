@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Transaction</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{%  static 'style.css' %}">
+<body>
+
+<h1>Add New Transaction</h1>
+<form method="POST">
+    {% csrf_token %}    
+    ID: <textarea name="ID" rows="1" cols="50"></textarea><br>
+    Transaction Sum: <textarea name="Tamount" rows="1" cols="50"></textarea><br>
+    <input type="submit">
+</form>
+
+<h1>Last 10 Transactions:</h1>
+
+<table border="1" width="40%">
+    <th>Date</th>
+    <th>Investor ID</th>
+    <th>Transaction Sum</th>
+    {% for content in query1 %}
+        <tr>
+            <td>{{ content.tDate }} </td>
+            <td>{{ content.ID }} </td>
+            <td>{{ content.TAmount }} </td>
+        </tr>
+    {% endfor%}
+</table>
+<br><br>
+
+{% if error_message %}
+    <div class="alert alert-success">
+        {{ error_message }}
+    </div>
+    {% endif %}
+
+<a href="index">Home</a><br><br>
+<a href="query_results">Query Results</a><br><br>
+<a href="buying">Buy Stocks</a><br><br>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Query Results</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{%  static 'style.css' %}">
+<body>
+<h1>Query 1</h1>
+
+<table border="1" width="40%">
+    <th>Name</th>
+    <th>Total Sum</th>
+    {% for content in query1 %}
+        <tr>
+            <td>{{ content.Name }} </td>
+            <td>{{ content.Totalsum }} </td>
+        </tr>
+    {% endfor%}
+</table>
+<br><br>
+
+<h1>Query 2</h1>
+<table border="1" width="40%">
+    <th>Symbol</th>
+    <th>Name</th>
+    <th>Total Quantity</th>
+    {% for content in query2 %}
+        <tr>
+            <td>{{ content.Symbol }} </td>
+            <td>{{ content.Name }} </td>
+            <td>{{ content.TotalQuantity }} </td>
+        </tr>
+    {% endfor%}
+</table>
+<br><br>
+
+<h1>Query 3</h1>
+<table border="1" width="40%">
+    <th>Symbol</th>
+    <th>Buyer Number</th>
+    {% for content in query3 %}
+        <tr>
+            <td>{{ content.Symbol }} </td>
+            <td>{{ content.BuyerNum }} </td>
+        </tr>
+    {% endfor%}
+</table>
+<br><br>
+
+<a href="index">Home</a><br><br>
+<a href="buying">Buy Stocks</a><br><br>
+<a href="add_transaction">Add Transaction</a><br><br>
+
+
+</body>
+</html>

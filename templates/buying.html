@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buying</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{%  static 'style.css' %}">
+<body>
+
+<h1>Buy Stocks</h1>
+<form method="POST">
+    {% csrf_token %}    
+    ID: <textarea name="ID" rows="1" cols="50"></textarea><br>
+    Company: <textarea name="Symbol" rows="1" cols="50"></textarea><br>
+    Quantity: <textarea name="BQuantity" rows="1" cols="50"></textarea><br>
+    <input type="submit">
+</form>
+
+<h1>Last 10 Stock Buys:</h1>
+<table border="1" width="40%">
+    <th>Date</th>
+    <th>Investor ID</th>
+    <th>Symbol</th>
+    <th>Quantity</th>
+    {% for content in query1 %}
+        <tr>
+            <td>{{ content.tDate }} </td>
+            <td>{{ content.ID }} </td>
+            <td>{{ content.Symbol }} </td>
+            <td>{{ content.BQuantity }} </td>
+        </tr>
+    {% endfor%}
+</table>
+<br><br>
+{#{% if error_message %}#}
+{#    <div class="alert alert-success">#}
+{#        {{ error_message }}#}
+{#    </div>#}
+{#    {% endif %}#}
+
+<!-- Display Errors -->
+{% if errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<a href="index">Home</a><br><br>
+<a href="query_results">Query Results</a><br><br>
+<a href="add_transaction">Add Transaction</a><br><br>
+
+</body>
+</html>
